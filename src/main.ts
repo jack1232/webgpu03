@@ -1,8 +1,5 @@
-import $ from 'jquery';
 import { CheckWebGPU } from './helper';
 import { Shaders } from './shaders';
-
-$('#id-gpu-check').html(CheckWebGPU());
 
 const CreateTriangle = async () => {
     const checkgpu = CheckWebGPU();
