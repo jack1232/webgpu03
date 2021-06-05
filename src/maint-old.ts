@@ -1,5 +1,8 @@
+import $ from 'jquery';
 import { CheckWebGPU } from './helper';
 import { Shaders } from './shaders';
+
+$('#id-gpu-check').html(CheckWebGPU());
 
 const CreateTriangle = async () => {
     const checkgpu = CheckWebGPU();
@@ -17,36 +20,33 @@ const CreateTriangle = async () => {
         device: device,
         format: swapChainFormat,
     });
-    
+
     const shader = Shaders();
     const pipeline = device.createRenderPipeline({
-        vertex: {
+        vertexStage: {
             module: device.createShaderModule({                    
                 code: shader.vertex
             }),
             entryPoint: "main"
         },
-        fragment: {
+        fragmentStage: {
             module: device.createShaderModule({                    
                 code: shader.fragment
             }),
-            entryPoint: "main",
-            targets: [{
-                format: swapChainFormat as GPUTextureFormat
-            }]
+            entryPoint: "main"
         },
-        primitive:{
-            topology: "triangle-list"
-        } 
+        primitiveTopology: "triangle-list",
+        colorStates: [{
+            format: swapChainFormat
+        }]
     });
 
     const commandEncoder = device.createCommandEncoder();
     const textureView = swapChain.getCurrentTexture().createView();
     const renderPass = commandEncoder.beginRenderPass({
         colorAttachments: [{
-            view: textureView,
-            loadValue: [0.5, 0.5, 0.8, 1], //background color
-            storeOp: 'store'
+            attachment: textureView,
+            loadValue: [0.5, 0.5, 0.8, 1] //background color
         }]
     });
     renderPass.setPipeline(pipeline);
@@ -57,7 +57,3 @@ const CreateTriangle = async () => {
 }
 
 CreateTriangle();
-
-
-
-
