@@ -32,7 +32,7 @@ const CreateTriangle = async () => {
             }),
             entryPoint: "main",
             targets: [{
-                format: swapChainFormat as GPUTextureFormat
+                format: swapChainFormat
             }]
         },
         primitive:{
