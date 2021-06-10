@@ -7,3 +7,7 @@ This sample WebGPU app creates a triangle with different color on each vertext. 
 
 ![wg03-01](dist/assets/wg03-01.png)
 
+## Link for All Source Code Used in the WebGPU Step-By-Step Video Series:
+
+https://github.com/jack1232/WebGPU-Step-By-Step
+
