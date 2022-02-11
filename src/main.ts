@@ -1,5 +1,6 @@
 import { CheckWebGPU } from './helper';
 import shader from './shader.wgsl';
+import "./site.css";
 
 const CreateTriangle = async () => {
     const checkgpu = CheckWebGPU();
