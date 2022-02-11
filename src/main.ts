@@ -45,13 +45,15 @@ const CreateTriangle = async () => {
     const renderPass = commandEncoder.beginRenderPass({
         colorAttachments: [{
             view: textureView,
-            loadValue: { r: 0.2, g: 0.247, b: 0.314, a: 1.0 }, //background color
+            clearValue: { r: 0.2, g: 0.247, b: 0.314, a: 1.0 }, //background color
+            loadOp: 'clear',
+            loadValue: { r: 0.2, g: 0.247, b: 0.314, a: 1.0 }, 
             storeOp: 'store'
         }]
     });
     renderPass.setPipeline(pipeline);
     renderPass.draw(3, 1, 0, 0);
-    renderPass.endPass();
+    renderPass.end();
 
     device.queue.submit([commandEncoder.finish()]);
 }
