@@ -1,5 +1,5 @@
 import { CheckWebGPU } from './helper';
-import { Shaders } from './shaders';
+import shader from './shader.wgsl';
 
 const CreateTriangle = async () => {
     const checkgpu = CheckWebGPU();
@@ -18,19 +18,19 @@ const CreateTriangle = async () => {
         format: format,
     });
     
-    const shader = Shaders();
+    //const shader = Shaders();
     const pipeline = device.createRenderPipeline({
         vertex: {
             module: device.createShaderModule({                    
-                code: shader.vertex
+                code: shader
             }),
-            entryPoint: "main"
+            entryPoint: "vs_main"
         },
         fragment: {
             module: device.createShaderModule({                    
-                code: shader.fragment
+                code: shader
             }),
-            entryPoint: "main",
+            entryPoint: "fs_main",
             targets: [{
                 format: format
             }]
@@ -45,7 +45,7 @@ const CreateTriangle = async () => {
     const renderPass = commandEncoder.beginRenderPass({
         colorAttachments: [{
             view: textureView,
-            loadValue: [0.5, 0.5, 0.8, 1], //background color
+            loadValue: { r: 0.2, g: 0.247, b: 0.314, a: 1.0 }, //background color
             storeOp: 'store'
         }]
     });
