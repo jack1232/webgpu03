@@ -61,6 +61,6 @@ const CreateTriangle = async () => {
 
 CreateTriangle();
 
-
-
-
+window.addEventListener('resize', function(){
+    CreateTriangle();
+});
