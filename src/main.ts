@@ -21,6 +21,7 @@ const CreateTriangle = async () => {
     
     //const shader = Shaders();
     const pipeline = device.createRenderPipeline({
+        layout: 'auto',
         vertex: {
             module: device.createShaderModule({                    
                 code: shader
@@ -48,7 +49,6 @@ const CreateTriangle = async () => {
             view: textureView,
             clearValue: { r: 0.2, g: 0.247, b: 0.314, a: 1.0 }, //background color
             loadOp: 'clear',
-            loadValue: { r: 0.2, g: 0.247, b: 0.314, a: 1.0 }, 
             storeOp: 'store'
         }]
     });
