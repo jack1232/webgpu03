@@ -17,7 +17,11 @@
   "dependencies": {
     "@types/jquery": "^3.5.5",
     "@types/node": "14.14.20",
+<<<<<<< HEAD
     "@webgpu/types": "^0.1.21",
+=======
+    "@webgpu/types": "0.1.12",
+>>>>>>> 1202703b292dcd4169506aa54acbf40282560613
     "css-loader": "^5.2.0",
     "jquery": "^3.6.0",
     "jshint": "^2.12.0",
